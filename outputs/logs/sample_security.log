@@ -1,0 +1,10 @@
+[2024-09-29 10:15:32] INFO: System startup completed successfully
+[2024-09-29 10:16:45] WARNING: Failed login attempt from IP 192.168.1.100
+[2024-09-29 10:17:12] ERROR: Authentication failed for user 'admin'
+[2024-09-29 10:18:00] ALERT: Suspicious activity detected from 10.0.0.5
+[2024-09-29 10:19:30] INFO: File access: /etc/passwd
+[2024-09-29 10:20:15] CRITICAL: Malware signature detected in file sample.exe
+[2024-09-29 10:21:00] WARNING: Brute force attack attempt detected
+[2024-09-29 10:22:30] ERROR: SQL injection attempt blocked
+[2024-09-29 10:23:45] INFO: Network connection established to external server
+[2024-09-29 10:24:00] ALERT: Intrusion attempt from unauthorized source
