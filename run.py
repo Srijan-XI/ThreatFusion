@@ -48,6 +48,26 @@ def compile_cpp_scanner():
         print(f"[-] Error compiling C++ scanner: {e}")
         return False
 
+def compile_advanced_scanner():
+    """Compile the Advanced C++ scanner"""
+    print("[*] Compiling Advanced C++ scanner...")
+    try:
+        cmd = [
+            "g++", "-std=c++17", "-O2", "-o",
+            "scanner_cpp/advanced_scanner.exe" if platform.system() == "Windows" else "scanner_cpp/advanced_scanner",
+            "scanner_cpp/advanced_main.cpp", "scanner_cpp/advanced_scanner.cpp",
+            "-I", "scanner_cpp"
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            print(f"[-] Advanced scanner compilation failed: {result.stderr}")
+            return False
+        print("[+] Advanced C++ scanner compiled successfully")
+        return True
+    except Exception as e:
+        print(f"[-] Error compiling advanced scanner: {e}")
+        return False
+
 def run_cpp_scanner():
     """Run the compiled C++ scanner"""
     print("[*] Running C++ scanner...")
@@ -65,6 +85,32 @@ def run_cpp_scanner():
         return True
     except Exception as e:
         print(f"[-] Error running C++ scanner: {e}")
+        return False
+
+def run_advanced_scanner():
+    """Run the Advanced C++ scanner"""
+    print("[*] Running Advanced C++ scanner...")
+    try:
+        scanner_path = "scanner_cpp/advanced_scanner.exe" if platform.system() == "Windows" else "scanner_cpp/advanced_scanner"
+        if not os.path.exists(scanner_path):
+            print("[-] Advanced scanner executable not found")
+            return False
+        
+        # Run with default settings
+        result = subprocess.run([scanner_path], capture_output=True, text=True)
+        
+        # Print output for visibility
+        if result.stdout:
+            print(result.stdout)
+        
+        if result.returncode != 0 and result.returncode != 1:  # 1 means threats found, which is OK
+            print(f"[-] Advanced scanner failed: {result.stderr}")
+            return False
+        
+        print("[+] Advanced scanner completed")
+        return True
+    except Exception as e:
+        print(f"[-] Error running advanced scanner: {e}")
         return False
 
 def run_go_scanner():
@@ -115,15 +161,29 @@ def main():
     # Run all components
     success = True
     
+    # Compile both scanners
     if not compile_cpp_scanner():
         success = False
     
+    if not compile_advanced_scanner():
+        print("[!] Advanced scanner compilation failed, continuing with basic scanner...")
+    
+    # Run basic C++ scanner
     if success and not run_cpp_scanner():
         success = False
     
+    # Run advanced scanner (optional, doesn't fail the whole pipeline)
+    if os.path.exists("scanner_cpp/advanced_scanner.exe" if platform.system() == "Windows" else "scanner_cpp/advanced_scanner"):
+        print("\n" + "="*60)
+        print("Running Advanced Scanner")
+        print("="*60)
+        run_advanced_scanner()  # Don't fail on advanced scanner errors
+    
+    # Run Go scanner
     if success and not run_go_scanner():
         success = False
     
+    # Run Python analyzer
     if success and not run_python_analyzer():
         success = False
     
