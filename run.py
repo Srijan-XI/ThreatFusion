@@ -10,6 +10,13 @@ import os
 import platform
 from pathlib import Path
 
+
+SUBPROCESS_TEXT_KWARGS = {
+    "text": True,
+    "encoding": "utf-8",
+    "errors": "replace",
+}
+
 def check_dependencies():
     """Check if required tools are available"""
     tools = {
@@ -20,7 +27,7 @@ def check_dependencies():
     missing = []
     for tool, cmd in tools.items():
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=5)
+            result = subprocess.run(cmd, capture_output=True, timeout=5, **SUBPROCESS_TEXT_KWARGS)
             if result.returncode != 0:
                 missing.append(tool)
         except (subprocess.TimeoutExpired, FileNotFoundError):
@@ -38,7 +45,7 @@ def compile_cpp_scanner():
             "scanner_cpp/scanner.exe" if platform.system() == "Windows" else "scanner_cpp/scanner",
             "scanner_cpp/main.cpp", "scanner_cpp/utils.cpp"
         ]
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = subprocess.run(cmd, capture_output=True, **SUBPROCESS_TEXT_KWARGS)
         if result.returncode != 0:
             print(f"[-] C++ compilation failed: {result.stderr}")
             return False
@@ -58,7 +65,7 @@ def compile_advanced_scanner():
             "scanner_cpp/advanced_main.cpp", "scanner_cpp/advanced_scanner.cpp",
             "-I", "scanner_cpp"
         ]
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = subprocess.run(cmd, capture_output=True, **SUBPROCESS_TEXT_KWARGS)
         if result.returncode != 0:
             print(f"[-] Advanced scanner compilation failed: {result.stderr}")
             return False
@@ -77,7 +84,7 @@ def run_cpp_scanner():
             print("[-] C++ scanner executable not found")
             return False
             
-        result = subprocess.run([scanner_path], capture_output=True, text=True)
+        result = subprocess.run([scanner_path], capture_output=True, **SUBPROCESS_TEXT_KWARGS)
         if result.returncode != 0:
             print(f"[-] C++ scanner failed: {result.stderr}")
             return False
@@ -97,7 +104,7 @@ def run_advanced_scanner():
             return False
         
         # Run with default settings
-        result = subprocess.run([scanner_path], capture_output=True, text=True)
+        result = subprocess.run([scanner_path], capture_output=True, **SUBPROCESS_TEXT_KWARGS)
         
         # Print output for visibility
         if result.stdout:
@@ -117,8 +124,12 @@ def run_go_scanner():
     """Run the Go network scanner"""
     print("[*] Running Go network scanner...")
     try:
-        result = subprocess.run(["go", "run", "net_analyzer_go/netscan.go"], 
-                              capture_output=True, text=True, cwd=".")
+        result = subprocess.run(
+            ["go", "run", "net_analyzer_go/netscan.go"],
+            capture_output=True,
+            cwd=".",
+            **SUBPROCESS_TEXT_KWARGS,
+        )
         if result.returncode != 0:
             print(f"[-] Go scanner failed: {result.stderr}")
             return False

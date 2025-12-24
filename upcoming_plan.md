@@ -1,5 +1,7 @@
 # ThreatFusion - Upcoming Improvements Plan
 
+*in this projrct we only use free and open source tools - fost*
+
 ## ✅ Completed Features
 
 ### ✅ 1. Enhanced C++ Scanner (COMPLETED ✓)
@@ -35,21 +37,21 @@
 
 ---
 
-## 🚀 Next Priority Features (Using FREE Tools)
+## 🚀 Next Priority Features (Using Tools)
 
 ### 1. Machine Learning-Based Anomaly Detection
-**100% FREE - Using Open Source Libraries**
+**100% - Using Open Source Libraries**
 
-- **scikit-learn** (Already installed) - FREE
+- **scikit-learn** (Already installed) -
   - Isolation Forest for anomaly detection
   - Random Forest for classification
   - K-Means clustering for threat grouping
   
-- **TensorFlow/Keras** - FREE & Open Source
+- **TensorFlow/Keras** - & Open Source
   - LSTM/RNN for sequence analysis
   - Autoencoders for anomaly detection
   
-- **FREE Datasets Available**:
+- * Datasets Available**:
   - CICIDS2017/2018 - Network traffic
   - EMBER - Malware samples
   - KDD Cup 1999 - Intrusion detection
@@ -59,37 +61,37 @@
 ---
 
 ### 2. Real-Time Monitoring & Alerting System
-**100% FREE Options**
+**100% Options**
 
 **File System Monitoring**:
-- watchdog Python library - FREE
-- Built-in OS file watchers - FREE
+- watchdog Python library -
+- Built-in OS file watchers -
 
-**Alerting Channels** (FREE):
-- **Discord Webhooks** - 100% FREE, unlimited
-- **Telegram Bot API** - 100% FREE, unlimited
-- **Email (Gmail/Outlook SMTP)** - FREE
-- **Desktop Notifications** - FREE
+**Alerting Channels** ):
+- **Discord Webhooks** - 100%, unlimited
+- **Telegram Bot API** - 100%, unlimited
+- **Email (Gmail/Outlook SMTP)** -
+- **Desktop Notifications** -
 
-**SIEM Integration** (FREE):
-- **Wazuh** - 100% FREE & Open Source
-- **ELK Stack** (Elasticsearch, Logstash, Kibana) - FREE
-- **Graylog** - FREE Open Source version
+**SIEM Integration** :
+- **Wazuh** - 100% free & Open Source
+- **ELK Stack** (Elasticsearch, Logstash, Kibana) -
+- **Graylog** - Open Source version
 
 ---
 
 ### 3. API Development - RESTful API
-**100% FREE Framework & Hosting**
+**100% Framework & Hosting**
 
 **Framework**:
-- **FastAPI** - FREE & Open Source
-- **Flask** - FREE & Open Source
+- **FastAPI** - & Open Source
+- **Flask** - & Open Source
 
-**FREE Hosting**:
-- **Render** - FREE tier (750 hours/month)
-- **Railway** - FREE tier
-- **Fly.io** - FREE tier
-- **Self-Hosted** - 100% FREE
+* Hosting**:
+- **Render** - tier (750 hours/month)
+- **Railway** - tier
+- **Fly.io** - tier
+- **Self-Hosted** - 100%
 
 **API Endpoints**:
 ```
@@ -106,12 +108,12 @@ DELETE /api/scan/{id}
 ---
 
 ### 4. Role Based Access Control (RBAC)
-**100% FREE Implementation**
+**100% Implementation**
 
-- **JWT (JSON Web Tokens)** - FREE (PyJWT library)
-- **OAuth2** - FREE (Authlib library)
-- **Local User Database** - FREE (SQLite/PostgreSQL)
-- **Bcrypt** for password hashing - FREE
+- **JWT (JSON Web Tokens)** - (PyJWT library)
+- **OAuth2** - (Authlib library)
+- **Local User Database** - (SQLite/PostgreSQL)
+- **Bcrypt** for password hashing -
 
 **Features**:
 - User roles: ADMIN, Analyst, Viewer
@@ -122,46 +124,45 @@ DELETE /api/scan/{id}
 ---
 
 ### 5. Web Dashboard
-**100% FREE Technologies**
 
 **Frontend**:
-- HTML/CSS/JavaScript - FREE
-- Tailwind CSS - FREE
-- Chart.js for visualizations - FREE
+- HTML/CSS/JavaScript -
+- Tailwind CSS -
+- Chart.js for visualizations -
 
 **Backend**:
-- FastAPI/Flask - FREE
-- Node.js + Express - FREE (alternative)
+- FastAPI/Flask -
+- Node.js + Express - (alternative)
 
 **Database**:
-- **SQLite** - 100% FREE (built-in)
-- **PostgreSQL** - FREE (self-hosted)
-- **MongoDB** - FREE (Community Edition)
+- **SQLite** - 100% (built-in)
+- **PostgreSQL** - (self-hosted)
+- **MongoDB** - (Community Edition)
 
-**FREE Hosting**:
-- **GitHub Pages** - 100% FREE
-- **Netlify** - FREE tier (100GB bandwidth/month)
-- **Vercel** - FREE tier
+* Hosting**:
+- **GitHub Pages** - 100%
+- **Netlify** - tier (100GB bandwidth/month)
+- **Vercel** - tier
 
 ---
 
-## 🔮 Future Plans (All FREE)
+## 🔮 Future Plans (All)
 
 ### Database Integration
-- SQLite (built-in, FREE)
-- PostgreSQL (FREE, self-hosted)
-- MongoDB Community (FREE)
+- SQLite (built-in,)
+- PostgreSQL , self-hosted
+- MongoDB Community 
 
 ### Container & Cloud Support
-- Docker & Docker Compose (FREE)
-- Kubernetes (FREE with minikube)
-- Oracle Cloud Always Free tier
-- AWS/GCP/Azure FREE tiers
+- Docker & Docker Compose 
+- Kubernetes  with minikube
+- Oracle Cloud Always tier
+- AWS/GCP/Azure tiers
 
 ### Visualization & Monitoring
-- Grafana (FREE & Open Source)
-- Prometheus (FREE & Open Source)
-- Chart.js (FREE)
+- Grafana  & Open Source
+- Prometheus  & Open Source
+- Chart.js 
 
 ---
 
@@ -169,49 +170,45 @@ DELETE /api/scan/{id}
 
 | Feature | Status | Cost |
 |---------|--------|------|
-| Enhanced C++ Scanner | ✅ Complete | FREE |
-| Advanced Reporting & Error Handling | ✅ Complete | FREE |
-| Enhanced Network Analysis | ✅ Complete | FREE |
-| Machine Learning | 🔄 In Progress | FREE |
-| Real-Time Monitoring | ⏳ Planned | FREE |
-| API Development | ⏳ Planned | FREE |
-| RBAC | ⏳ Planned | FREE |
-| Web Dashboard | ⏳ Future | FREE |
+| Enhanced C++ Scanner | ✅ Complete | |
+| Advanced Reporting & Error Handling | ✅ Complete | |
+| Enhanced Network Analysis | ✅ Complete | |
+| Machine Learning | 🔄 In Progress | |
+| Real-Time Monitoring | ⏳ Planned | |
+| API Development | ⏳ Planned | |
+| RBAC | ⏳ Planned | |
+| Web Dashboard | ⏳ Future | |
 
 ---
 
-## 🎯 FREE Resources Summary
+## 🎯 Resources Summary
 
-### Threat Intelligence (FREE):
+### Threat Intelligence :
 - AlienVault OTX
 - Abuse.ch (URLhaus, MalwareBazaar, ThreatFox)
 - PhishTank
 - GreyNoise Community
 - URLScan.io
 
-### Datasets (FREE):
+### Datasets :
 - CICIDS2017/2018 - Network traffic (Available)
 - EMBER - Malware classification (Empty)
 - KDD Cup 1999 - Intrusion detection (Available)
 - MalwareBazaar/URLHaus - Malware samples/URLs (Available)
 - PhishTank - Phishing URLs (Available)
 
-### Development Tools (FREE):
+### Development Tools ):
 - Python + scikit-learn + TensorFlow
 - FastAPI/Flask
 - Docker + Docker Compose
 - VS Code / PyCharm Community
 
-### Hosting (FREE Tiers):
+### Hosting  Tiers:
 - GitHub Pages
 - Netlify
 - Vercel
 - Render
 - Railway
-- Oracle Cloud Always Free
+- Oracle Cloud Always
 
 ---
-
-**Last Updated**: November 24, 2025  
-**Current Version**: ThreatFusion v2.2.0  
-**Total Cost**: $0/month (100% FREE) 💰✨
