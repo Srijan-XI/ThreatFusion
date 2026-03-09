@@ -1,0 +1,29 @@
+This is a test file with suspicious content for ThreatFusion Advanced Scanner.
+
+Embedded URLs:
+http://malicious-site.example.com/payload.exe
+https://suspicious-domain.net/download
+
+Embedded IP Addresses:
+192.168.1.100
+10.0.0.5
+172.16.254.1
+
+Suspicious API Calls:
+CreateRemoteThread
+VirtualAllocEx
+WriteProcessMemory
+IsDebuggerPresent
+GetProcAddress
+LoadLibrary
+
+Email Addresses:
+attacker@malware.com
+admin@suspicious-domain.net
+
+Command Execution:
+cmd.exe /c whoami
+powershell.exe -ExecutionPolicy Bypass
+wscript.exe malicious.vbs
+
+This file is designed to trigger multiple detection mechanisms in the advanced scanner.

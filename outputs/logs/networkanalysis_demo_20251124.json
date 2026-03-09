@@ -1,0 +1,2 @@
+{"timestamp": "2025-11-24T22:27:48.660144", "level": "\u001b[32mINFO\u001b[0m", "logger": "NetworkAnalysis_Demo", "message": "Starting network analysis demo", "module": "logger", "function": "_log", "line": 170}
+{"timestamp": "2025-11-24T22:27:50.216646", "level": "\u001b[32mINFO\u001b[0m", "logger": "NetworkAnalysis_Demo", "message": "Network analysis report saved to outputs\\network\\network_analysis_20251124_222750.json", "module": "logger", "function": "_log", "line": 170}

@@ -1,0 +1,98 @@
+{
+  "analysis_timestamp": "2025-09-29T16:31:23.499933",
+  "total_suspicious_entries": 14,
+  "entries": [
+    {
+      "filename": "sample_security.log",
+      "line_number": 1,
+      "content": "[2024-09-29 10:15:32] INFO: System startup completed successfully",
+      "timestamp": "2025-09-29T16:31:23.487310"
+    },
+    {
+      "filename": "sample_security.log",
+      "line_number": 2,
+      "content": "[2024-09-29 10:16:45] WARNING: Failed login attempt from IP 192.168.1.100",
+      "timestamp": "2025-09-29T16:31:23.487351"
+    },
+    {
+      "filename": "sample_security.log",
+      "line_number": 3,
+      "content": "[2024-09-29 10:17:12] ERROR: Authentication failed for user 'admin'",
+      "timestamp": "2025-09-29T16:31:23.487367"
+    },
+    {
+      "filename": "sample_security.log",
+      "line_number": 4,
+      "content": "[2024-09-29 10:18:00] ALERT: Suspicious activity detected from 10.0.0.5",
+      "timestamp": "2025-09-29T16:31:23.487385"
+    },
+    {
+      "filename": "sample_security.log",
+      "line_number": 6,
+      "content": "[2024-09-29 10:20:15] CRITICAL: Malware signature detected in file sample.exe",
+      "timestamp": "2025-09-29T16:31:23.487648"
+    },
+    {
+      "filename": "sample_security.log",
+      "line_number": 7,
+      "content": "[2024-09-29 10:21:00] WARNING: Brute force attack attempt detected",
+      "timestamp": "2025-09-29T16:31:23.487679"
+    },
+    {
+      "filename": "sample_security.log",
+      "line_number": 8,
+      "content": "[2024-09-29 10:22:30] ERROR: SQL injection attempt blocked",
+      "timestamp": "2025-09-29T16:31:23.487709"
+    },
+    {
+      "filename": "sample_security.log",
+      "line_number": 10,
+      "content": "[2024-09-29 10:24:00] ALERT: Intrusion attempt from unauthorized source",
+      "timestamp": "2025-09-29T16:31:23.487815"
+    },
+    {
+      "filename": "system_activity.log",
+      "line_number": 1,
+      "content": "2024-09-29 08:00:00 System initialization",
+      "timestamp": "2025-09-29T16:31:23.497937"
+    },
+    {
+      "filename": "system_activity.log",
+      "line_number": 5,
+      "content": "2024-09-29 09:15:20 ERROR: Permission denied accessing /root/secret",
+      "timestamp": "2025-09-29T16:31:23.498079"
+    },
+    {
+      "filename": "system_activity.log",
+      "line_number": 6,
+      "content": "2024-09-29 09:30:00 Process execution: cmd.exe /c whoami",
+      "timestamp": "2025-09-29T16:31:23.498109"
+    },
+    {
+      "filename": "system_activity.log",
+      "line_number": 7,
+      "content": "2024-09-29 09:45:15 WARNING: Unusual network traffic pattern",
+      "timestamp": "2025-09-29T16:31:23.498137"
+    },
+    {
+      "filename": "system_activity.log",
+      "line_number": 8,
+      "content": "2024-09-29 10:00:30 Database query executed",
+      "timestamp": "2025-09-29T16:31:23.498166"
+    },
+    {
+      "filename": "system_activity.log",
+      "line_number": 10,
+      "content": "2024-09-29 10:30:00 System backup completed",
+      "timestamp": "2025-09-29T16:31:23.498230"
+    }
+  ],
+  "summary": {
+    "files_affected": 2,
+    "threat_types": {
+      "errors": 4,
+      "malware_intrusion": 2,
+      "security_threats": 2
+    }
+  }
+}

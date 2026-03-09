@@ -1,0 +1,10 @@
+2024-09-29 08:00:00 System initialization
+2024-09-29 08:15:30 User login: john_doe
+2024-09-29 08:30:45 File operation: create /tmp/test.txt
+2024-09-29 09:00:12 Network activity: connection to 8.8.8.8:53
+2024-09-29 09:15:20 ERROR: Permission denied accessing /root/secret
+2024-09-29 09:30:00 Process execution: cmd.exe /c whoami
+2024-09-29 09:45:15 WARNING: Unusual network traffic pattern
+2024-09-29 10:00:30 Database query executed
+2024-09-29 10:15:45 User logout: john_doe
+2024-09-29 10:30:00 System backup completed

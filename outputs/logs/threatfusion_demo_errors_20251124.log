@@ -1,0 +1,40 @@
+[[31mERROR[0m] 2025-11-24 22:15:30 - ThreatFusion_Demo
+Module: logger | Function: _log | Line: 170
+Message: An error occurred during demo
+(<class 'ValueError'>, ValueError('Simulated error for demo'), <traceback object at 0x00000244220EEA00>)
+================================================================================
+Traceback (most recent call last):
+  File "P:\CODE-X\ThreatFusion\demo_reporting_logging.py", line 60, in demo_logging
+    raise ValueError("Simulated error for demo")
+ValueError: Simulated error for demo
+[[31mERROR[0m] 2025-11-24 22:15:30 - ThreatFusion_Demo
+Module: logger | Function: _log | Line: 170
+Message: ScannerError: Simulated scanner error
+(<class 'core.error_handler.ScannerError'>, ScannerError('Simulated scanner error'), <traceback object at 0x000002442215CA80>)
+================================================================================
+Traceback (most recent call last):
+  File "P:\CODE-X\ThreatFusion\core\error_handler.py", line 193, in wrapper
+    return func(*args, **kwargs)
+  File "P:\CODE-X\ThreatFusion\demo_reporting_logging.py", line 84, in risky_function
+    raise ScannerError("Simulated scanner error")
+core.error_handler.ScannerError: Simulated scanner error
+[[31mERROR[0m] 2025-11-24 22:16:11 - ThreatFusion_Demo
+Module: logger | Function: _log | Line: 170
+Message: An error occurred during demo
+(<class 'ValueError'>, ValueError('Simulated error for demo'), <traceback object at 0x000001F6354C07C0>)
+================================================================================
+Traceback (most recent call last):
+  File "P:\CODE-X\ThreatFusion\demo_reporting_logging.py", line 60, in demo_logging
+    raise ValueError("Simulated error for demo")
+ValueError: Simulated error for demo
+[[31mERROR[0m] 2025-11-24 22:16:11 - ThreatFusion_Demo
+Module: logger | Function: _log | Line: 170
+Message: ScannerError: Simulated scanner error
+(<class 'core.error_handler.ScannerError'>, ScannerError('Simulated scanner error'), <traceback object at 0x000001F635372240>)
+================================================================================
+Traceback (most recent call last):
+  File "P:\CODE-X\ThreatFusion\core\error_handler.py", line 193, in wrapper
+    return func(*args, **kwargs)
+  File "P:\CODE-X\ThreatFusion\demo_reporting_logging.py", line 84, in risky_function
+    raise ScannerError("Simulated scanner error")
+core.error_handler.ScannerError: Simulated scanner error

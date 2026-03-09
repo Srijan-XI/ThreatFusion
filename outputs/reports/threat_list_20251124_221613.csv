@@ -1,0 +1,6 @@
+File Path,Threat Level,File Type,File Size,Entropy,Is Packed,Has Anti-Debug,SHA256,Detection Reasons
+data/samples/malware.exe,CRITICAL,PE Executable,204800,7.90,True,True,a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6,"High entropy detected (7.9); Packed executable (UPX); Anti-debugging techniques detected; Suspicious API imports: VirtualAllocEx, WriteProcessMemory; Matches known malware hash"
+data/samples/suspicious_script.sh,HIGH,Script,4096,5.20,False,False,b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1,Contains suspicious commands; Network scanning detected; Data exfiltration patterns
+data/samples/adware.dll,HIGH,PE Executable,81920,6.80,True,False,c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2,Adware behavior detected; Suspicious network activity; Registry modification attempts
+data/samples/potentially_unwanted.exe,MEDIUM,PE Executable,51200,6.20,False,False,d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3,Potentially unwanted program (PUP); Bundled software detected
+data/samples/test_file.txt,LOW,Binary,1024,4.50,False,False,e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4,Contains suspicious strings
