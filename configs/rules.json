@@ -1,0 +1,165 @@
+{
+  "signatures": [
+    {
+      "pattern": "4d5a",
+      "description": "Portable Executable (PE) file detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "7f454c46",
+      "description": "ELF executable detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "504b0304",
+      "description": "ZIP archive detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "cafebabe",
+      "description": "Java class file detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "89504e47",
+      "description": "PNG image file detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "ffd8ffe0",
+      "description": "JPEG image file detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "25504446",
+      "description": "PDF document detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "d0cf11e0a1b11ae1",
+      "description": "Microsoft Office document (OLE) detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "504b030414000600",
+      "description": "Microsoft Office document (OOXML) detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "1f8b08",
+      "description": "GZIP compressed file detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "425a68",
+      "description": "BZIP2 compressed file detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "526172211a07",
+      "description": "RAR archive detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "377abcaf271c",
+      "description": "7-Zip archive detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "4d534346",
+      "description": "Microsoft Cabinet (CAB) file detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "5550582100000000",
+      "description": "UPX packer detected - Possible packed malware",
+      "severity": "high"
+    },
+    {
+      "pattern": "4d5a90000300000004000000ffff0000",
+      "description": "PE file with suspicious characteristics",
+      "severity": "medium"
+    },
+    {
+      "pattern": "558bec83ec",
+      "description": "Common function prologue - Potential shellcode",
+      "severity": "medium"
+    },
+    {
+      "pattern": "6a006a006a006a00",
+      "description": "Suspicious NULL push sequence - Possible exploit",
+      "severity": "high"
+    },
+    {
+      "pattern": "90909090",
+      "description": "NOP sled detected - Possible shellcode/exploit",
+      "severity": "high"
+    },
+    {
+      "pattern": "eb1f5e89760889",
+      "description": "Possible shellcode pattern detected",
+      "severity": "critical"
+    },
+    {
+      "pattern": "31c050682f2f7368682f62696e89e3505389e1b00bcd80",
+      "description": "Linux shellcode pattern detected",
+      "severity": "critical"
+    },
+    {
+      "pattern": "fce8820000006089e531c0648b50308b520c8b52148b7228",
+      "description": "Windows reverse shell pattern detected",
+      "severity": "critical"
+    },
+    {
+      "pattern": "4d5a50000200000004000f00ffff",
+      "description": "Themida/WinLicense packer detected",
+      "severity": "high"
+    },
+    {
+      "pattern": "60e8000000005d",
+      "description": "ASPack packer signature detected",
+      "severity": "high"
+    },
+    {
+      "pattern": "558bec83c4f0b8",
+      "description": "Delphi executable detected",
+      "severity": "info"
+    },
+    {
+      "pattern": "eb52e800000000",
+      "description": "FSG packer detected",
+      "severity": "high"
+    },
+    {
+      "pattern": "87250000000000",
+      "description": "PECompact packer detected",
+      "severity": "high"
+    },
+    {
+      "pattern": "a1????????c1e00303",
+      "description": "Petite packer detected",
+      "severity": "high"
+    },
+    {
+      "pattern": "558bec6aff68",
+      "description": "Visual C++ executable pattern",
+      "severity": "info"
+    },
+    {
+      "pattern": "eb0390909090",
+      "description": "Possible anti-debugging technique",
+      "severity": "medium"
+    }
+  ],
+  "metadata": {
+    "version": "2.0",
+    "last_updated": "2025-11-24",
+    "total_signatures": 34,
+    "categories": {
+      "file_types": 14,
+      "packers": 7,
+      "malware_patterns": 8,
+      "exploits": 5
+    }
+  }
+}

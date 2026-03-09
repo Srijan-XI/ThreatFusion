@@ -1,0 +1,30 @@
+# Python byte‑code cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+.env
+
+# Model artifacts (large binaries)
+ml_module/models/
+models/
+
+# Data files (potentially large)
+data/datasets/**
+
+# IDE / editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+*.exe
+
+# Runtime outputs
+outputs/
