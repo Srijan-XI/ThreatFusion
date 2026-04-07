@@ -1,0 +1,123 @@
+name: Bug report
+description: Report a reproducible problem in ThreatFusion
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐞 Bug Report
+        Thanks for taking the time to report this issue. Please provide as much detail as possible.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 📝 Summary
+      description: Clear and concise description of the issue.
+      placeholder: Describe what is broken.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔁 Steps to reproduce
+      description: List exact steps to reproduce the problem.
+      placeholder: |
+        1. Go to ...
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Expected behavior
+      description: What should happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🎯 Impact severity
+      description: Choose the impact level.
+      options:
+        - Critical (blocking)
+        - High (major feature broken)
+        - Medium (workaround exists)
+        - Low (minor/cosmetic)
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: 💻 OS
+      placeholder: e.g., Windows 11
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: 🐍 Python version
+      placeholder: e.g., 3.11.9
+
+  - type: input
+    id: node_version
+    attributes:
+      label: 🌐 Node version (if web-related)
+      placeholder: e.g., 20.19.0
+
+  - type: input
+    id: commit
+    attributes:
+      label: 🔖 Branch / commit
+      placeholder: e.g., main / a1b2c3d
+
+  - type: checkboxes
+    id: execution_area
+    attributes:
+      label: 🧭 Affected area
+      options:
+        - label: analyzer_py
+        - label: network
+        - label: ml_module
+        - label: core
+        - label: web
+        - label: scanner_cpp
+        - label: net_analyzer_go
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📜 Logs / stack trace / screenshots
+      description: Paste logs or include screenshot links.
+      render: shell
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: ℹ️ Additional context
+      description: Any other details that can help triage.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: ✅ Pre-submission checks
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: I have included steps to reproduce and expected behavior.
+          required: true
