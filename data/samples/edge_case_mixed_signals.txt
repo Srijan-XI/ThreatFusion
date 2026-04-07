@@ -1,0 +1,24 @@
+Quarterly IT Operations Note (Mixed Signals Test)
+
+Normal activity:
+- Installed monthly security updates
+- Rotated service account credentials
+- Verified backups for finance and HR shares
+
+Standard admin commands observed:
+- ipconfig /all
+- tasklist
+- netstat -ano
+
+Potentially suspicious fragments (included for threshold testing):
+- powershell.exe -ExecutionPolicy RemoteSigned
+- cmd.exe /c whoami
+- CurrentVersion\\Run
+- certutil.exe -urlcache -split -f https://intranet.local/update.bin C:\\Temp\\update.bin
+
+Context:
+The command sequence above may be legitimate in maintenance workflows, but should still increase suspicion score due to overlap with abuse patterns.
+
+Test objective:
+- Ensure analyzer does not classify this as critical by default
+- Confirm mixed benign/suspicious signals produce a moderate risk assessment

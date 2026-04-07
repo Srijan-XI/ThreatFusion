@@ -1,0 +1,34 @@
+Threat IOC Bundle (Test Data)
+
+Domains:
+- malware-update.test
+- c2-control-node.test
+- dropper-cdn.test
+
+URLs:
+- http://malware-update.test/payload.exe
+- https://dropper-cdn.test/bin/agent.dll
+
+IP Addresses:
+- 185.199.110.10
+- 45.95.147.23
+- 103.77.192.8
+
+Email addresses:
+- ops@c2-control-node.test
+- admin@malware-update.test
+
+Suspicious binaries / LOLBins:
+cmd.exe
+powershell.exe
+mshta.exe
+regsvr32.exe
+rundll32.exe
+certutil.exe
+bitsadmin.exe
+
+Persistence indicators:
+CurrentVersion\\Run
+CurrentVersion\\RunOnce
+Task Scheduler
+WMI Event Subscription
