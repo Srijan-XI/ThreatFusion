@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 # Get the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WEB_DIR="$SCRIPT_DIR"
-VENV_PATH="$SCRIPT_DIR/../../.venv"
+VENV_PATH="$SCRIPT_DIR/../.venv"
 
 echo -e "${CYAN}========================================"
 echo -e "  ThreatFusion Web Interface"

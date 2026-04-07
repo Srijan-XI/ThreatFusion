@@ -8,7 +8,8 @@ Write-Host ""
 $webPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Check if virtual environment exists
-$venvPath = Join-Path $webPath "..\..venv"
+$venvPath = Join-Path $webPath "..\.venv"
+$venvPath = [System.IO.Path]::GetFullPath($venvPath)
 if (-Not (Test-Path $venvPath)) {
     Write-Host "[!] Virtual environment not found at: $venvPath" -ForegroundColor Yellow
     Write-Host "[*] Creating virtual environment..." -ForegroundColor Yellow
