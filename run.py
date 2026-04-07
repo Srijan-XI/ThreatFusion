@@ -8,10 +8,11 @@ import subprocess
 import sys
 import os
 import platform
-from pathlib import Path
 
 
 SUBPROCESS_TEXT_KWARGS = {
+    # Normalize subprocess output decoding across tools/platforms and avoid
+    # crashes on unexpected byte sequences.
     "text": True,
     "encoding": "utf-8",
     "errors": "replace",
@@ -19,6 +20,7 @@ SUBPROCESS_TEXT_KWARGS = {
 
 def check_dependencies():
     """Check if required tools are available"""
+    # Only check external toolchain dependencies required by this orchestrator.
     tools = {
         'g++': ['g++', '--version'],
         'go': ['go', 'version'],
@@ -39,7 +41,7 @@ def compile_cpp_scanner():
     """Compile the C++ scanner"""
     print("[*] Compiling C++ scanner...")
     try:
-        # Use utils.cpp instead of main.cpp for the implementation
+        # Build platform-specific executable name while keeping shared sources.
         cmd = [
             "g++", "-std=c++17", "-o", 
             "scanner_cpp/scanner.exe" if platform.system() == "Windows" else "scanner_cpp/scanner",
@@ -59,6 +61,7 @@ def compile_advanced_scanner():
     """Compile the Advanced C++ scanner"""
     print("[*] Compiling Advanced C++ scanner...")
     try:
+        # Advanced scanner enables optimization and includes local scanner headers.
         cmd = [
             "g++", "-std=c++17", "-O2", "-o",
             "scanner_cpp/advanced_scanner.exe" if platform.system() == "Windows" else "scanner_cpp/advanced_scanner",
@@ -80,6 +83,7 @@ def run_cpp_scanner():
     print("[*] Running C++ scanner...")
     try:
         scanner_path = "scanner_cpp/scanner.exe" if platform.system() == "Windows" else "scanner_cpp/scanner"
+        # Fail fast with a clear message when compilation was skipped/failed.
         if not os.path.exists(scanner_path):
             print("[-] C++ scanner executable not found")
             return False
@@ -103,13 +107,15 @@ def run_advanced_scanner():
             print("[-] Advanced scanner executable not found")
             return False
         
-        # Run with default settings
+        # Run with default settings from the scanner binary.
         result = subprocess.run([scanner_path], capture_output=True, **SUBPROCESS_TEXT_KWARGS)
         
-        # Print output for visibility
+        # Surface scanner output in the orchestrator logs for operator visibility.
         if result.stdout:
             print(result.stdout)
         
+        # Return code 1 indicates "threat(s) found" in this scanner and is treated
+        # as an expected analysis outcome, not a runtime failure.
         if result.returncode != 0 and result.returncode != 1:  # 1 means threats found, which is OK
             print(f"[-] Advanced scanner failed: {result.stderr}")
             return False
@@ -124,15 +130,29 @@ def run_go_scanner():
     """Run the Go network scanner"""
     print("[*] Running Go network scanner...")
     try:
+        # Forward optional scan configuration to the Go scanner process.
+        subnet = os.getenv("THREATFUSION_SUBNET", "192.168.1.")
+        ports = os.getenv("THREATFUSION_PORTS", "21,22,23,80,443,445,3306,3389,8080")
+        print(f"[*] Go scan config -> subnet: {subnet} | ports: {ports}")
+
+        child_env = os.environ.copy()
+        child_env["THREATFUSION_SUBNET"] = subnet
+        child_env["THREATFUSION_PORTS"] = ports
+
+        # Execute from repository root so relative paths inside the Go toolchain
+        # and project remain stable.
         result = subprocess.run(
             ["go", "run", "net_analyzer_go/netscan.go"],
             capture_output=True,
             cwd=".",
+            env=child_env,
             **SUBPROCESS_TEXT_KWARGS,
         )
         if result.returncode != 0:
             print(f"[-] Go scanner failed: {result.stderr}")
             return False
+        if result.stdout:
+            print(result.stdout)
         print("[+] Go network scanner completed")
         return True
     except Exception as e:
@@ -143,7 +163,8 @@ def run_python_analyzer():
     """Run the Python log analyzer"""
     print("[*] Running Python log analyzer...")
     try:
-        from analyzer_py.analyzer import analyze_logs, main
+        # Import locally so this runner can still show dependency errors cleanly.
+        from analyzer_py.analyzer import main
         main()
         print("[+] Python analyzer completed")
         return True
@@ -164,15 +185,16 @@ def main():
         print("[-] Please install the missing tools and try again")
         sys.exit(1)
     
-    # Ensure required directories exist
+    # Ensure output/data directories exist before scanners write artifacts.
     os.makedirs("outputs/logs", exist_ok=True)
     os.makedirs("outputs/reports", exist_ok=True)
     os.makedirs("data/samples", exist_ok=True)
     
-    # Run all components
+    # `success` tracks critical pipeline stages; optional stages can fail
+    # without terminating the entire run.
     success = True
     
-    # Compile both scanners
+    # Build scanners first so failures are detected before analysis starts.
     if not compile_cpp_scanner():
         success = False
     
@@ -183,7 +205,8 @@ def main():
     if success and not run_cpp_scanner():
         success = False
     
-    # Run advanced scanner (optional, doesn't fail the whole pipeline)
+    # Advanced scanner is opportunistic: run it when available but do not fail
+    # the full pipeline if it errors.
     if os.path.exists("scanner_cpp/advanced_scanner.exe" if platform.system() == "Windows" else "scanner_cpp/advanced_scanner"):
         print("\n" + "="*60)
         print("Running Advanced Scanner")
