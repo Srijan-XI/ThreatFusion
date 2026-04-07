@@ -1,7 +1,7 @@
 # ThreatFusion - Upcoming Improvements Plan
 
-*in this projrct we only use free and open source tools - fost*
-
+*In this project we only use free and open source tools - fost*
+  
 ## ✅ Completed Features
 
 ### ✅ 1. Enhanced C++ Scanner (COMPLETED ✓)

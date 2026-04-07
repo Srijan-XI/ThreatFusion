@@ -7,7 +7,7 @@ FastAPI backend for web interface integration
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 import asyncio
@@ -18,8 +18,9 @@ from pathlib import Path
 from enum import Enum
 
 # Add project root to path
-project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
+project_root = Path(__file__).resolve().parents[2]
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
 
 # Initialize FastAPI
 app = FastAPI(
@@ -47,14 +48,19 @@ class ConnectionManager:
         self.active_connections.append(websocket)
 
     def disconnect(self, websocket: WebSocket):
-        self.active_connections.remove(websocket)
+        if websocket in self.active_connections:
+            self.active_connections.remove(websocket)
 
     async def broadcast(self, message: dict):
-        for connection in self.active_connections:
+        dead_connections = []
+        for connection in list(self.active_connections):
             try:
                 await connection.send_json(message)
-            except:
-                pass
+            except Exception:
+                dead_connections.append(connection)
+
+        for connection in dead_connections:
+            self.disconnect(connection)
 
 manager = ConnectionManager()
 
@@ -78,7 +84,7 @@ class ScanResult(BaseModel):
     end_time: Optional[datetime] = None
     files_scanned: int = 0
     threats_detected: int = 0
-    threat_summary: Dict[str, int] = {}
+    threat_summary: Dict[str, int] = Field(default_factory=dict)
 
 class ThreatInfo(BaseModel):
     id: str
@@ -97,11 +103,10 @@ threats: List[ThreatInfo] = []
 def generate_scan_id():
     return f"scan_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
-async def run_scan_pipeline(scan_request: ScanRequest):
+async def run_scan_pipeline(scan_request: ScanRequest, scan_id: str):
     """Execute the ThreatFusion scan pipeline"""
     global current_scan, threats
     
-    scan_id = generate_scan_id()
     current_scan = ScanResult(
         scan_id=scan_id,
         status=ScanStatus.RUNNING,
@@ -217,11 +222,12 @@ async def start_scan(scan_request: ScanRequest, background_tasks: BackgroundTask
     if current_scan and current_scan.status == ScanStatus.RUNNING:
         raise HTTPException(status_code=400, detail="A scan is already running")
     
-    background_tasks.add_task(run_scan_pipeline, scan_request)
+    scan_id = generate_scan_id()
+    background_tasks.add_task(run_scan_pipeline, scan_request, scan_id)
     
     return {
         "message": "Scan started",
-        "scan_id": generate_scan_id(),
+        "scan_id": scan_id,
         "timestamp": datetime.now().isoformat()
     }
 
@@ -325,6 +331,10 @@ async def websocket_endpoint(websocket: WebSocket):
                 "timestamp": datetime.now().isoformat()
             })
     except WebSocketDisconnect:
+        pass
+    except Exception:
+        pass
+    finally:
         manager.disconnect(websocket)
 
 # Health check

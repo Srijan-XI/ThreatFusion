@@ -8,6 +8,7 @@ import socket
 import struct
 import json
 import time
+import ipaddress
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
@@ -338,9 +339,11 @@ class GeoLocationMapper:
         """Load geolocation cache"""
         if self.cache_file.exists():
             try:
-                with open(self.cache_file, 'r') as f:
+                with open(self.cache_file, 'r', encoding='utf-8') as f:
                     return json.load(f)
-            except:
+            except (json.JSONDecodeError, OSError) as e:
+                if self.logger:
+                    self.logger.warning(f"Failed to load geo cache {self.cache_file}: {e}")
                 return {}
         return {}
     
@@ -412,26 +415,11 @@ class GeoLocationMapper:
     def _is_private_ip(self, ip: str) -> bool:
         """Check if IP is private"""
         try:
-            parts = [int(p) for p in ip.split('.')]
-            
-            # 10.0.0.0/8
-            if parts[0] == 10:
-                return True
-            
-            # 172.16.0.0/12
-            if parts[0] == 172 and 16 <= parts[1] <= 31:
-                return True
-            
-            # 192.168.0.0/16
-            if parts[0] == 192 and parts[1] == 168:
-                return True
-            
-            # 127.0.0.0/8 (loopback)
-            if parts[0] == 127:
-                return True
-            
-            return False
-        except:
+            ip_obj = ipaddress.ip_address(ip)
+            return ip_obj.is_private or ip_obj.is_loopback
+        except ValueError:
+            if self.logger:
+                self.logger.debug(f"Invalid IP address format: {ip}")
             return False
 
 

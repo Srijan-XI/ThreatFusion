@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier, IsolationForest
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 import joblib
 import os
+from pathlib import Path
 
 class AnomalyDetector:
     def __init__(self, model_type='rf'):
@@ -157,7 +158,8 @@ if __name__ == "__main__":
     from data_loader import load_data
     
     # Test with KDD Cup 99
-    filepath = r"p:\CODE-X\ThreatFusion\data\datasets\Network Intrusion\kddcup99_10_percent.csv"
+    repo_root = Path(__file__).resolve().parents[1]
+    filepath = str(repo_root / "data" / "datasets" / "Network Intrusion" / "kddcup99_10_percent.csv")
     df = load_data(filepath)
     
     if df is not None:
