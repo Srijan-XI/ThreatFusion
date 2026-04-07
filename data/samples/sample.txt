@@ -1,3 +1,20 @@
-This is a sample text file for scanning.
-It contains some test data and patterns.
-Normal file content here.
+ThreatFusion Baseline Sample
+Generated: 2026-04-08
+
+Purpose:
+This file is intentionally benign and is used as a control sample during scanner validation.
+
+Routine system notes:
+- User login audits completed
+- Patch compliance verified
+- Backup integrity checks passed
+- No unusual process behavior observed
+
+Administrative commands seen in normal operations:
+- ipconfig /all
+- netstat -ano
+- tasklist
+
+Expected scanner behavior:
+- Low risk classification
+- No high-severity threat indicators

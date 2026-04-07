@@ -60,3 +60,71 @@ NtCreateFile
 ZwCreateFile
 NtWriteFile
 ZwWriteFile
+bitsadmin.exe
+certutil.exe
+installutil.exe
+msbuild.exe
+wmic.exe
+at.exe
+schtasks.exe
+wevtutil.exe
+vssadmin.exe
+bcdedit.exe
+wbadmin.exe
+netsh.exe
+net.exe
+net1.exe
+nltest.exe
+whoami
+ipconfig
+quser
+query user
+tasklist
+systeminfo
+arp -a
+nslookup
+ping -n
+powershell -enc
+powershell -nop
+powershell -w hidden
+IEX
+Invoke-Expression
+Invoke-WebRequest
+Invoke-RestMethod
+DownloadString
+FromBase64String
+EncodedCommand
+-ExecutionPolicy Bypass
+rundll32 javascript:
+reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run
+reg add HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run
+CurrentVersion\\RunOnce
+CurrentVersion\\Policies\\System
+Task Scheduler
+WMI Event Subscription
+MiniDumpWriteDump
+CreateToolhelp32Snapshot
+Process32First
+Process32Next
+AdjustTokenPrivileges
+SeDebugPrivilege
+NtMapViewOfSection
+NtUnmapViewOfSection
+QueueUserAPC
+SetThreadContext
+ResumeThread
+CreateRemoteThreadEx
+CreateThread
+WinHttpOpen
+WinHttpSendRequest
+InternetConnect
+HttpOpenRequest
+recv
+send
+connect
+WSAStartup
+Mimikatz
+lsass.exe
+SAM\\Domains\\Account\\Users
+cmdkey /list
+vaultcmd

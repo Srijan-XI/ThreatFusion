@@ -149,17 +149,57 @@
       "pattern": "eb0390909090",
       "description": "Possible anti-debugging technique",
       "severity": "medium"
+    },
+    {
+      "pattern": "706f7765727368656c6c202d656e63",
+      "description": "Encoded PowerShell command pattern detected",
+      "severity": "high"
+    },
+    {
+      "pattern": "636d642e657865202f63",
+      "description": "Command shell execution chain detected",
+      "severity": "medium"
+    },
+    {
+      "pattern": "687474703a2f2f",
+      "description": "HTTP beacon/download indicator",
+      "severity": "medium"
+    },
+    {
+      "pattern": "68747470733a2f2f",
+      "description": "HTTPS beacon/download indicator",
+      "severity": "medium"
+    },
+    {
+      "pattern": "626173653634",
+      "description": "Base64 decode/obfuscation indicator",
+      "severity": "medium"
+    },
+    {
+      "pattern": "77686f616d69",
+      "description": "Recon command pattern (whoami)",
+      "severity": "low"
+    },
+    {
+      "pattern": "6e657420757365",
+      "description": "Lateral movement command pattern (net use)",
+      "severity": "high"
+    },
+    {
+      "pattern": "7661646f7573622e646c6c",
+      "description": "LOLBin proxy execution indicator (vadosb.dll style)",
+      "severity": "high"
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2025-11-24",
-    "total_signatures": 34,
+    "last_updated": "2026-04-08",
+    "total_signatures": 38,
     "categories": {
       "file_types": 14,
       "packers": 7,
-      "malware_patterns": 8,
-      "exploits": 5
+      "malware_patterns": 11,
+      "exploits": 6
     }
   }
 }
