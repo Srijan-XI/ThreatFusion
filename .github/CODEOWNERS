@@ -1,0 +1,7 @@
+# CODEOWNERS for ThreatFusion
+#
+# Update the GitHub handles below to real users/teams in your org.
+# GitHub uses the last matching pattern in this file.
+
+# Default owner for everything in the repository
+* @Srijan-XI
