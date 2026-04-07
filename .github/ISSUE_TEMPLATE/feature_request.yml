@@ -1,0 +1,91 @@
+name: Feature request
+description: Suggest an idea to improve ThreatFusion
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✨ Feature Request
+        Share your idea with enough detail for design and implementation discussion.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 💡 Problem statement
+      description: What problem are you trying to solve?
+      placeholder: Describe the pain point.
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: 🎯 Desired outcome
+      description: What should improve if this is implemented?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 🛠️ Proposed solution
+      description: Describe your preferred approach.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternatives considered
+      description: What other options did you evaluate?
+
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: 🧭 Related project areas
+      options:
+        - label: analyzer_py
+        - label: network
+        - label: ml_module
+        - label: core
+        - label: web
+        - label: scanner_cpp
+        - label: net_analyzer_go
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: 📊 Expected impact
+      description: Include impact on detection quality, performance, security, and maintenance.
+      placeholder: |
+        Detection quality:
+        Performance:
+        Security:
+        Maintenance:
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: ✅ Acceptance criteria (optional)
+      description: List conditions for done.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 📎 References / mockups / examples
+      description: Add links, sample output, or screenshots.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: ✅ Pre-submission checks
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: I provided a clear problem statement and expected outcome.
+          required: true
