@@ -49,7 +49,7 @@ if not exist "%WEB_DIR%node_modules" (
 )
 
 REM Check if Python virtual environment exists
-set VENV_PATH=%WEB_DIR%..\..\.venv
+set VENV_PATH=%WEB_DIR%..\.venv
 if not exist "%VENV_PATH%" (
     echo [*] Virtual environment not found.
     echo [*] Creating virtual environment...
