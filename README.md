@@ -43,56 +43,7 @@ python run.py
 
 ## 📁 Project Structure
 
-```
-ThreatFusion/
-├── web/                      # Web Interface (NEW!)
-│   ├── api/                  # FastAPI Backend
-│   │   ├── main.py          # REST API + WebSocket
-│   │   └── requirements.txt
-│   ├── src/                  # React Frontend
-│   │   ├── components/      # UI Components
-│   │   ├── pages/           # Dashboard, Scans, Threats, Reports, Settings
-│   │   └── services/        # API Client + WebSocket
-│   ├── run.bat              # Windows startup script
-│   ├── run.sh               # Linux/Mac startup script
-│   └── package.json
-│
-├── scanner_cpp/              # C++ Advanced Scanner
-│   ├── advanced_scanner.cpp # PE/ELF parser, entropy analysis
-│   ├── advanced_scanner.hpp # Header definitions
-│   └── advanced_main.cpp    # Scanner entry point
-│
-├── net_analyzer_go/          # Go Network Scanner
-│   └── netscan.go           # Concurrent network scanning
-│
-├── analyzer_py/              # Python Analysis Engine
-│   ├── analyzer.py          # Main analyzer
-│   └── models/
-│       └── heuristics.py    # Detection heuristics
-│
-├── core/                     # Core Modules
-│   ├── logger.py            # Advanced logging system
-│   ├── error_handler.py     # Error handling & recovery
-│   └── reporting.py         # Multi-format reporting
-│
-├── network/                  # Network Analysis
-│   └── network_analyzer.py  # Packet capture & analysis
-│
-├── configs/                  # Configuration Files
-│   ├── rules.json           # Signature database
-│   ├── malware_hashes.json  # Known malware hashes
-│   └── suspicious_strings.txt
-│
-├── data/                     # Test Data
-│   └── samples/             # Sample files for testing
-│
-├── outputs/                  # Output Directory
-│   ├── logs/                # Log files
-│   └── reports/             # Generated reports
-│
-├── run.py                    # Main orchestrator
-└── requirements.txt          # Python dependencies
-```
+For the complete folder-by-folder layout, see [Project_Structure.md](Project_Structure.md).
 
 ---
 
@@ -350,21 +301,27 @@ This project honors the discipline and legacy of cybersecurity professionals. Co
 
 ## 📄 License
 
-Proprietary software developed for cybersecurity research and analysis.
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
+
+See [LICENSE](LICENSE) for the full license text.
+
+This software is provided **without warranty** as described in the GPL-3.0 terms.
 
 ---
 
 ## 👤 Author
 
-**Srijan** - Lead Developer & Architect
+**Srijan-XI** - Head Developer & Architect
 
 ---
 
 ## 🎯 Version
 
-**Current Version**: 3.0.0 (Web Interface Release)
+**Current Version**: 3.0.1 (Documentation & Maintenance Update)
 
 See `CHANGELOG.md` for detailed version history.
+
+**Last Updated**: 2026-04-08
 
 ---
 

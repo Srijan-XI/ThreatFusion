@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.0.1] - 2026-04-08
+
+### Documentation & Consistency Update
+
+### Changed
+- Updated project version references to **3.0.1** for documentation consistency.
+- Refreshed top-level project documentation metadata in `README.md`.
+- Improved release documentation continuity by adding this patch release entry.
+
+### Notes
+- No runtime code paths or scanner logic were modified in this release.
+- This release is focused on documentation accuracy and maintenance.
+
+---
+
 ## [3.0.0] - 2025-12-25
 
 ### 🎉 Major Release: Web Interface & Real-time Monitoring
@@ -916,17 +931,16 @@ C++/Go/Python Scanners
 
 ## Future Roadmap
 
-### Planned for 2.2.0
-- Machine Learning-based anomaly detection
-- Real-time monitoring and alerting
-- Enhanced network analysis with packet capture
-- RESTful API for integration
+### Planned for 3.1.0
+- Deeper ML-based anomaly detection pipeline improvements
+- Expanded threat intelligence enrichment workflows
+- Extended report automation and scheduled exports
 
-### Planned for 3.0.0
-- Web interface with interactive dashboard
+### Planned for 4.0.0
 - Database integration (PostgreSQL/MongoDB)
 - Container support (Docker, Kubernetes)
-- Cloud deployment (AWS/Azure/GCP)
+- Cloud deployment profiles (AWS/Azure/GCP)
+- Multi-tenant deployment and role-based access controls
 
 ---
 

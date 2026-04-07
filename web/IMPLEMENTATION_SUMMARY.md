@@ -365,4 +365,4 @@ npm run dev
 ---
 
 Made with ❤️ for ThreatFusion
-**v1.0.0** - December 25, 2025
+**v3.0.1** - April 8, 2026
