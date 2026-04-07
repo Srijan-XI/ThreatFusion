@@ -1,11 +1,19 @@
 # Python byte‑code cache
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
 
 # Virtual environment
 venv/
 .venv/
 .env
+.env.*
+!.env.example
 
 # Model artifacts (large binaries)
 ml_module/models/
@@ -13,6 +21,11 @@ models/
 
 # Data files (potentially large)
 data/datasets/**
+
+# Python packaging/build
+build/
+dist/
+*.egg-info/
 
 # IDE / editor files
 .idea/
@@ -23,6 +36,21 @@ data/datasets/**
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+
+# Frontend dependencies/build
+web/node_modules/
+web/dist/
+
+# Native build artifacts
+*.o
+*.obj
+*.dll
+*.so
+*.a
+*.lib
 
 *.exe
 
