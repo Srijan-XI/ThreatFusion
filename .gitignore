@@ -16,8 +16,8 @@ venv/
 !.env.example
 
 # Model artifacts (large binaries)
-ml_module/models/
-models/
+/ml_module/models/
+/models/
 
 # Data files (potentially large)
 data/datasets/**
@@ -56,3 +56,5 @@ web/dist/
 
 # Runtime outputs
 outputs/
+output/reports/
+output/logs/
