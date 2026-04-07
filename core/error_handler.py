@@ -7,7 +7,7 @@ Provides robust error handling with graceful degradation
 import functools
 import traceback
 import sys
-from typing import Callable, Any, Optional, Type, Tuple
+from typing import Callable, Any, Optional, Type, Tuple, Dict, List
 from pathlib import Path
 import json
 from datetime import datetime
@@ -59,14 +59,14 @@ class ErrorHandler:
         self.error_log_dir = Path(error_log_dir)
         self.error_log_dir.mkdir(parents=True, exist_ok=True)
         self.error_count = 0
-        self.errors = []
+        self.errors: List[Dict[str, Any]] = []
         
         if LOGGER_AVAILABLE:
             self.logger = get_logger()
         else:
             self.logger = None
     
-    def log_error(self, error: Exception, context: dict = None, fatal: bool = False):
+    def log_error(self, error: Exception, context: Optional[Dict[str, Any]] = None, fatal: bool = False):
         """
         Log an error with context information
         
@@ -82,7 +82,7 @@ class ErrorHandler:
             'error_number': self.error_count,
             'error_type': type(error).__name__,
             'error_message': str(error),
-            'traceback': traceback.format_exc(),
+            'traceback': ''.join(traceback.format_exception(type(error), error, error.__traceback__)),
             'context': context or {},
             'fatal': fatal
         }
@@ -112,7 +112,7 @@ class ErrorHandler:
             if fatal:
                 print("[FATAL] Application cannot continue", file=sys.stderr)
     
-    def _write_error_to_file(self, error_data: dict):
+    def _write_error_to_file(self, error_data: Dict[str, Any]):
         """Write error to JSON file"""
         error_file = self.error_log_dir / f"error_{datetime.now().strftime('%Y%m%d')}.json"
         
@@ -134,7 +134,7 @@ class ErrorHandler:
         except Exception as e:
             print(f"[ERROR] Failed to write error log: {e}", file=sys.stderr)
     
-    def get_error_summary(self) -> dict:
+    def get_error_summary(self) -> Dict[str, Any]:
         """Get summary of errors"""
         error_types = {}
         for error in self.errors:

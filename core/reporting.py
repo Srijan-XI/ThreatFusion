@@ -5,7 +5,7 @@ Generates comprehensive reports in multiple formats: PDF, HTML, Excel, CSV
 """
 
 import json
-import os
+import html
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Optional
@@ -269,6 +269,11 @@ class PDFReport(ThreatFusionReport):
 
 class HTMLReport(ThreatFusionReport):
     """Generate HTML reports with interactive elements"""
+
+    @staticmethod
+    def _escape(value: Any) -> str:
+        """Escape dynamic content inserted into HTML templates."""
+        return html.escape(str(value), quote=True)
     
     def generate_dashboard(self, scan_data: Dict[str, Any]) -> str:
         """Generate interactive HTML dashboard"""
@@ -504,8 +509,8 @@ class HTMLReport(ThreatFusionReport):
             for level, count in scan_data['threat_statistics'].items():
                 html_content += f"""
                     <div class="stat-card">
-                        <h3>{level}</h3>
-                        <div class="value">{count}</div>
+                        <h3>{self._escape(level)}</h3>
+                        <div class="value">{self._escape(count)}</div>
                     </div>
 """
             html_content += """
@@ -522,16 +527,17 @@ class HTMLReport(ThreatFusionReport):
 """
             for i, threat in enumerate(scan_data['threats'], 1):
                 threat_level = threat.get('threat_level', 'UNKNOWN').lower()
+                safe_level_class = ''.join(ch for ch in threat_level if ch.isalnum() or ch in ('-', '_'))
                 html_content += f"""
                     <li class="threat-item">
-                        <h4>Threat #{i}: {threat.get('filepath', 'Unknown')}</h4>
-                        <span class="threat-level {threat_level}">{threat.get('threat_level', 'UNKNOWN')}</span>
+                        <h4>Threat #{i}: {self._escape(threat.get('filepath', 'Unknown'))}</h4>
+                        <span class="threat-level {safe_level_class}">{self._escape(threat.get('threat_level', 'UNKNOWN'))}</span>
                         
                         <div class="threat-details">
-                            <div><strong>File Type:</strong> {threat.get('file_type', 'Unknown')}</div>
-                            <div><strong>File Size:</strong> {threat.get('file_size', 0)} bytes</div>
+                            <div><strong>File Type:</strong> {self._escape(threat.get('file_type', 'Unknown'))}</div>
+                            <div><strong>File Size:</strong> {self._escape(threat.get('file_size', 0))} bytes</div>
                             <div><strong>Entropy:</strong> {threat.get('entropy', 0):.2f}</div>
-                            <div><strong>Packed:</strong> {threat.get('is_packed', False)}</div>
+                            <div><strong>Packed:</strong> {self._escape(threat.get('is_packed', False))}</div>
                         </div>
 """
                 
@@ -542,7 +548,7 @@ class HTMLReport(ThreatFusionReport):
                             <ul>
 """
                     for reason in threat['detection_reasons']:
-                        html_content += f"<li>{reason}</li>\n"
+                        html_content += f"<li>{self._escape(reason)}</li>\n"
                     html_content += """
                             </ul>
                         </div>

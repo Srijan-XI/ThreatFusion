@@ -6,7 +6,6 @@ Provides structured logging with multiple levels and outputs
 
 import logging
 import json
-import os
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, Dict, Any
@@ -27,12 +26,16 @@ class ColoredFormatter(logging.Formatter):
     }
     
     def format(self, record):
-        # Add color to level name
-        levelname = record.levelname
-        if levelname in self.COLORS:
-            record.levelname = f"{self.COLORS[levelname]}{levelname}{self.COLORS['RESET']}"
-        
-        return super().format(record)
+        # Avoid leaking ANSI-modified level names into other handlers by restoring
+        # the original value after console formatting.
+        original_levelname = record.levelname
+        if original_levelname in self.COLORS:
+            record.levelname = f"{self.COLORS[original_levelname]}{original_levelname}{self.COLORS['RESET']}"
+
+        try:
+            return super().format(record)
+        finally:
+            record.levelname = original_levelname
 
 
 class JSONFormatter(logging.Formatter):
@@ -61,7 +64,8 @@ class JSONFormatter(logging.Formatter):
         if hasattr(record, 'extra_data'):
             log_data['extra'] = record.extra_data
         
-        return json.dumps(log_data)
+        # Ensure logging never fails when extra fields contain non-JSON-native values.
+        return json.dumps(log_data, default=str)
 
 
 class ThreatFusionLogger:
@@ -78,6 +82,8 @@ class ThreatFusionLogger:
         # Create logger
         self.logger = logging.getLogger(name)
         self.logger.setLevel(logging.DEBUG)
+        # Keep logs from being duplicated by parent/root handlers.
+        self.logger.propagate = False
         
         # Remove existing handlers
         self.logger.handlers.clear()
