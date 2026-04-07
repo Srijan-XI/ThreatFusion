@@ -1,0 +1,127 @@
+name: Feature fix request
+description: Report a broken or malfunctioning existing feature that needs fixing
+title: "[Fix]: "
+labels:
+  - bug
+  - feature-fix
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔧 Feature Fix Request
+        Use this template to report that an existing feature is broken or not working as intended.
+
+  - type: textarea
+    id: feature
+    attributes:
+      label: 🎯 Which feature needs fixing?
+      description: Name and describe the feature that is broken.
+      placeholder: e.g., "Network scanner - port detection", "Web dashboard - threat chart rendering"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Expected behavior
+      description: How should this feature work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ Actual behavior
+      description: What is it doing instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: 📊 Impact
+      description: How does this broken behavior affect users?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🎯 Severity
+      description: How critical is this fix?
+      options:
+        - Critical (feature unusable)
+        - High (major functionality broken)
+        - Medium (partially broken)
+        - Low (edge case or minor issue)
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔁 Reproduce the issue
+      description: Steps to see the broken behavior.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: 🧭 Affected area
+      options:
+        - label: analyzer_py
+        - label: network
+        - label: ml_module
+        - label: core
+        - label: web
+        - label: scanner_cpp
+        - label: net_analyzer_go
+
+  - type: input
+    id: introduced
+    attributes:
+      label: 🔖 When was this last working?
+      description: Approximate commit, tag, or date when feature worked.
+      placeholder: e.g., v1.2.0, main (2 weeks ago)
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📜 Logs / errors / screenshots
+      description: Include relevant output and visuals.
+      render: shell
+
+  - type: textarea
+    id: root_cause
+    attributes:
+      label: 🔍 Suspected root cause (optional)
+      description: If you investigated, what might be causing this?
+
+  - type: textarea
+    id: proposed_fix
+    attributes:
+      label: 💡 Proposed fix (optional)
+      description: Any ideas on how to fix this?
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: 🛠️ Current workaround (optional)
+      description: Any temporary workaround available?
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: ✅ Pre-submission checks
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: This is a broken existing feature (not a new feature request).
+          required: true
+        - label: I have clear reproduce steps.
+          required: true

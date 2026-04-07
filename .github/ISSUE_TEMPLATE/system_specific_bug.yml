@@ -1,0 +1,131 @@
+name: System-specific bug report
+description: Report a bug that occurs on a specific operating system or environment
+title: "[Bug - $SYSTEM]: "
+labels:
+  - bug
+  - system-specific
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🖥️ System-Specific Bug Report
+        Use this template if the issue only occurs on a specific OS or system configuration.
+
+  - type: dropdown
+    id: system
+    attributes:
+      label: 🖥️ Operating system
+      description: Which OS are you experiencing this issue on?
+      options:
+        - Windows
+        - macOS
+        - Linux (Ubuntu)
+        - Linux (Debian)
+        - Linux (Fedora)
+        - Linux (Arch)
+        - Linux (Other)
+        - WSL (Windows Subsystem for Linux)
+        - Docker/Container
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: os_version
+    attributes:
+      label: 📦 OS version
+      placeholder: e.g., Windows 11 Build 22621, Ubuntu 22.04 LTS, macOS 14.2
+    validations:
+      required: true
+
+  - type: input
+    id: arch
+    attributes:
+      label: ⚙️ Architecture
+      placeholder: e.g., x86_64, ARM64, i386
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 📝 Summary
+      description: Clear description of the issue on this specific system.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔁 Steps to reproduce
+      description: Exact steps to reproduce on this OS.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Expected behavior
+      description: What should happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ Actual behavior
+      description: What happens instead?
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: 🐍 Python version
+      placeholder: e.g., 3.11.9
+
+  - type: textarea
+    id: env_details
+    attributes:
+      label: 🌍 Environment details
+      description: Any special environment setup (virtual env, conda, Docker, etc.)?
+      placeholder: |
+        - Using .venv: yes/no
+        - IDE/Shell: ...
+        - Other tools: ...
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📜 Logs / stack trace / error messages
+      description: Include full error output.
+      render: shell
+
+  - type: checkboxes
+    id: verified
+    attributes:
+      label: 🔍 Verification
+      options:
+        - label: This issue does NOT occur on other systems (I tested or verified).
+        - label: I see the same issue on the main branch.
+        - label: I have not found a workaround for this system-specific issue.
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: 🛠️ Workaround (if any)
+      description: Did you find a temporary fix or workaround?
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: ✅ Pre-submission checks
+      options:
+        - label: I searched for existing system-specific issues and did not find a duplicate.
+          required: true
+        - label: I have OS and architecture details.
+          required: true
